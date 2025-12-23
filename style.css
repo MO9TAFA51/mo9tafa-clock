@@ -1,0 +1,145 @@
+:root {
+    --primary-color: rgb(0, 210, 255); 
+    --glass-bg: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.15);
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #090a0f; 
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('pexels-francesco-ungaro-6613570.jpg') no-repeat center center/cover;
+    filter: blur(15px) brightness(0.6);
+    transform: scale(1.1);
+    z-index: -1;
+}
+.clock {
+    width: 350px;
+    height: 350px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px); 
+    border: 2px solid var(--glass-border);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 
+        0 25px 45px rgba(0,0,0,0.5),
+        inset 0 0 30px rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clock b {
+    position: absolute;
+    inset: 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.5rem;
+    transform: rotate(calc(30deg * var(--i)));
+}
+.clock b span {
+    display: inline-block;
+    transform: rotate(calc(-30deg * var(--i))); 
+}
+.clock::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 100;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+.hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 50%;
+    border-radius: 50% 50% 0 0;
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1); 
+}
+.hour {
+    width: 8px;
+    height: 80px;
+    background: #fff;
+    z-index: 10;
+}
+.minute {
+    width: 5px;
+    height: 110px;
+    background: rgba(255,255,255,0.7);
+    z-index: 9;
+}
+.second {
+    width: 2px;
+    height: 135px;
+    background: var(--primary-color);
+    z-index: 11;
+    box-shadow: 0 0 15px var(--primary-color); 
+}
+.clock-container {
+    position: relative;
+}
+.clock-container::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: var(--primary-color);
+    filter: blur(100px);
+    opacity: 0.2;
+    z-index: -1;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.name-tag {
+    text-align: center;
+    position: relative;
+}
+.greeting {
+    display: block;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+.my-name {
+    margin: 0;
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3),
+     0 0 20px var(--primary-color);
+    position: relative;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.my-name:hover {
+    letter-spacing: 10px;
+    color: var(--primary-color);
+    text-shadow: 0 0 30px var(--primary-color),
+    0 0 60px var(--primary-color);
+}
+.my-name:hover::after {
+    width: 150px;
+}
